@@ -1,0 +1,10 @@
+<nav>
+  <ul>
+    <li (click)="passDecade()" [class.active]="!currDecade">
+      All
+    </li>
+    <li *ngFor="let decade of decades" (click)="passDecade(decade)" [class.active]="decade == currDecade">
+      {{ decade }}'s
+    </li>
+  </ul>
+</nav>

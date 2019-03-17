@@ -1,0 +1,69 @@
+.movies {
+    li {
+        max-width: 1055px;
+        margin-bottom: 28px;
+        padding: 14px;
+        background: #e8ebee;
+        border-radius: 8px;
+        border: 2px solid #303436;
+
+        .image {
+
+            img {
+                width: 141px;
+                border-radius: 8px;
+            }
+        }
+
+        .content {
+            display: grid;
+            color: #303436;
+
+            .title {
+                font-family: "Open Sans", sans-serif;
+                font-size: 24px;
+                font-weight: 700;
+                height: 35px;
+                border-bottom: 1px solid #8d989e;
+            }
+            .metadata {
+                margin-top: 10px;
+                overflow: hidden;
+
+                .rated {
+                    color: #8d989d;
+                    font-family: "Courier", monospace;
+                    font-size: 14px;
+                    float: left;
+                    span {
+                        display: inline-block;
+                        padding: 5px 10px;
+                        border: 1px solid #8d989d;
+                        border-radius: 8px;
+                    }
+                }
+                .runtime {
+                    font-family: Helvetica, Arial, sans-serif;
+                    font-size: 14px;
+                    margin-left: 35px;
+                    float: left;
+                }
+                .release {
+                    font-family: Helvetica, Arial, sans-serif;
+                    font-size: 14px;
+                    text-align: right;
+                    float: right;
+                }
+            }
+            .plot {
+                margin-top: 17px;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+            }
+            .imdb {
+                text-align: right;
+            }
+        }
+    }
+}

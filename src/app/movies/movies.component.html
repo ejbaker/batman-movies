@@ -1,0 +1,19 @@
+<app-sidebar [decades]="decades" [currDecade]="currDecade" (updateDecade)="displayMovies($event)"></app-sidebar>
+
+<ul class="movies">
+  <li *ngFor="let movie of filteredMovies" class="grid grid-bleed">
+    <div class="image col-2"><img src="assets/images/{{ movie.Poster }}"></div>
+    <div class="content col-10 col-grid">
+      <div class="title">{{ movie.Title }}</div>
+      <div class="metadata">
+        <div class="rated"><span>{{ movie.Rated }}</span></div>
+        <div class="runtime">{{ movie.Runtime }}</div>
+        <div class="release">{{ movie.Released }}</div>
+      </div>
+      <div class="plot">
+        {{ movie.Plot }}
+      </div>
+      <div class="imdb flex-footer"><app-go-to-imdb [imdbId]="movie.imdbID"></app-go-to-imdb></div>
+    </div>
+  </li>
+</ul>
