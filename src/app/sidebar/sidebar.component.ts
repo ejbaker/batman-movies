@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
-  passDecade(decade: number) {
+  passDecade(decade?: number) {
     this.updateDecade.emit(decade);
   }
 }
