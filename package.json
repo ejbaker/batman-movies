@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot=true --baseHref='/batman-movies' --prod=true --deployUrl='https://ejbaker.github.io/batman-movies/' --deleteOutputPath=true --outputPath=dist",
+    "build": "ng build --aot=true --baseHref=/batman-movies --prod=true --deployUrl=https://ejbaker.github.io/batman-movies/ --deleteOutputPath=true --outputPath=dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
