@@ -265,8 +265,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/movies/movies.component.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/movies/movies.component.ts:80</a></div>
                 </td>
             </tr>
 
@@ -549,15 +549,10 @@ export class MoviesComponent implements OnInit {
       }) &#x3D;&gt; {
         // arrow functions preserve parent &#x60;this&#x60;
         // so we can continue to refer to the component properties/methods with &#x60;this&#x60;
-        // peel off Search
-        const parsedData &#x3D; data.Search;
-        // update decades
+        // set decades
         this.decades &#x3D; data.Decades;
-        // sort results
-        this.movies &#x3D; parsedData.sort((obj1, obj2) &#x3D;&gt; {
-          // ascending
-          return obj1.Year - obj2.Year;
-        });
+        // set movies
+        this.movies &#x3D; data.Search;
         // filter movies
         this.displayMovies();
       });

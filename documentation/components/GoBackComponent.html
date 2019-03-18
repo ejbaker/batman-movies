@@ -157,7 +157,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/go-back/go-back.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/go-back/go-back.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -233,8 +233,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/go-back/go-back.component.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/go-back/go-back.component.ts:35</a></div>
                 </td>
             </tr>
 
@@ -296,6 +296,12 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { isDevMode } from &#x27;@angular/core&#x27;;
+
+/**
+ * Third party modules
+ */
+import { throwError } from &#x27;rxjs&#x27;;
 
 /**
  * Go Back component
@@ -321,11 +327,13 @@ export class GoBackComponent {
    */
   toHome(url: string) {
     this.router.navigate([url]).then((event) &#x3D;&gt; {
-      if (event) {
-        console.log(&#x27;Navigation is successful!&#x27;);
-      }
-      else {
-        console.log(&#x27;Navigation has failed!&#x27;)
+      if (!event) {
+        // only log in dev mode
+        if (isDevMode()) {
+          console.error(&#x27;Navigation has failed&#x27;);
+        }
+        // throw error always
+        return throwError(&#x27;Something went wrong!&#x27;)
       }
     });
   }

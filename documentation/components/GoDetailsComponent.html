@@ -171,7 +171,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/go-details/go-details.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/go-details/go-details.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -234,7 +234,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/go-details/go-details.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/go-details/go-details.component.ts:26</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -276,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/app/go-details/go-details.component.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/go-details/go-details.component.ts:41</a></div>
                 </td>
             </tr>
 
@@ -355,6 +355,12 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { isDevMode } from &#x27;@angular/core&#x27;;
+
+/**
+ * Third party modules
+ */
+import { throwError } from &#x27;rxjs&#x27;;
 
 /**
  * Go Details Component
@@ -386,11 +392,13 @@ export class GoDetailsComponent {
    */
   toMovie(url: string, id: string) {
     this.router.navigate([url, id]).then((event) &#x3D;&gt; {
-      if (event) {
-        console.log(&#x27;Navigation is successful!&#x27;);
-      }
-      else {
-        console.log(&#x27;Navigation has failed!&#x27;)
+      if (!event) {
+        // only log in dev mode
+        if (isDevMode()) {
+          console.error(&#x27;Navigation has failed&#x27;);
+        }
+        // throw error always
+        return throwError(&#x27;Something went wrong!&#x27;)
       }
     });
   }

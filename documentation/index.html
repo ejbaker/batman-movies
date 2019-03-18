@@ -31,27 +31,26 @@
                    <div class="content-data">
 
 <h1 id="front-end-coding-challenge">Front-End Coding Challenge</h1>
-<h2 id="task">Task</h2>
-<p>Create a simple interface for viewing the latest Batman movies as a vertical list of ten movies which can also be filtered by decade.</p>
-<p>A UI mockup can be found in the included <code>moviemock.sketch</code> file (or <code>moviemock.pdf</code> if you don&#39;t have Sketch).
-Only one movie is shown in the mockup, but use that as a template for the other 9.</p>
-<h2 id="requirements">Requirements</h2>
+<h2 id="methodology">Methodology</h2>
+<p>Given the option to work with either Angular 1.7 or the latest (then Angular 7), I opted for the latter. I always prefer to learn new things when I can, and it was a lot more fun and exciting to work in Angular 7. I used Angular CLI for the very sensible directory structure and boilerplate tests. The component / service generator also came in handy.</p>
+<h2 id="design">Design</h2>
+<p>App initially loads the list of movies via a data service that connects to the API. A pipe is used to manipulate the resulting data slightly, changing the value of Poster and adding a few more fields from the get-by-ID API call to match the comp. Clicking the View Details button opens up a separate view, mostly included for the sake of adding a bit more to the app, and on that view the View on IMDB button from the comp is available, which then opens imDB in a named second tab to avoid navigating the user away from our web app entirely.</p>
+<p>The View Details button was not called for by the comp, but given how easy it was to provide both it and View on IMDB, that is likely what I would do in a real-world situation -- build both options, then bring it back to the project manager to see which one is preferred.</p>
+<p>Data is pulled from the API on each refresh and pulled from an internal variable during normal navigation. For a real-world project, data would be persisted, either with caching or a DB.</p>
+<p>Passes both included unit and e2e tests, which can be run with <code>ng test</code> and <code>ng e2e</code> respectively.</p>
+<h2 id="angular-7-modules">Angular 7 modules</h2>
 <ul>
-<li>Build using the latest version of AngularJS or Angular, whichever is most comfortable to you.</li>
-<li>Use SASS to write your css and compile it down.</li>
-<li>Write your JavaScript using either vanilla js or using TypeScript and compile it down.</li>
-<li>Build and include at least one Angular component.</li>
-<li>Make sure your code is supported by Chrome, FF, and IE11.</li>
-<li>Publish your completed project to a github repo provide us with a link.</li>
+<li>@angular/animations</li>
+<li>@angular/router</li>
 </ul>
-<h2 id="apis">APIs</h2>
-<p>Sign up for a free api key to use the Movie service here:
-http://www.omdbapi.com/apikey.aspx</p>
-<p>Using the first 10 results of this api search for batman movies:
-http://www.omdbapi.com/?s=Batman</p>
-<p>Take those results and look up details for each movie returned using this api pattern:
-http://www.omdbapi.com/?i=tt0372784 (where i = the imdb id found above)</p>
-<p>Hint: Images will be blocked from hotlinking. Manually download all of those images to the project first, then reference them locally (parse the url string from the response).</p>
+<h2 id="other-dependencies">Other dependencies</h2>
+<ul>
+<li>rxjs</li>
+<li>core-js</li>
+<li>zone.js</li>
+<li>reflex-grid</li>
+<li>modernizr</li>
+</ul>
 
 
 
