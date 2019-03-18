@@ -3,6 +3,12 @@
  */
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { isDevMode } from '@angular/core';
+
+/**
+ * Third party modules
+ */
+import { throwError } from 'rxjs';
 
 /**
  * Go Back component
@@ -28,11 +34,13 @@ export class GoBackComponent {
    */
   toHome(url: string) {
     this.router.navigate([url]).then((event) => {
-      if (event) {
-        console.log('Navigation is successful!');
-      }
-      else {
-        console.log('Navigation has failed!')
+      if (!event) {
+        // only log in dev mode
+        if (isDevMode()) {
+          console.error('Navigation has failed');
+        }
+        // throw error always
+        return throwError('Something went wrong!')
       }
     });
   }

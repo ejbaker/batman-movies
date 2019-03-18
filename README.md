@@ -10,6 +10,10 @@ App initially loads the list of movies via a data service that connects to the A
 
 The View Details button was not called for by the comp, but given how easy it was to provide both it and View on IMDB, that is likely what I would do in a real-world situation -- build both options, then bring it back to the project manager to see which one is preferred.
 
+Data is pulled from the API on each refresh and pulled from an internal variable during normal navigation. For a real-world project, data would be persisted, either with caching or a DB.
+
+Passes both included unit and e2e tests, which can be run with `ng test` and `ng e2e` respectively.
+
 ## Angular 7 modules
 
 * @angular/animations

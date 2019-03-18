@@ -3,6 +3,12 @@
  */
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { isDevMode } from '@angular/core';
+
+/**
+ * Third party modules
+ */
+import { throwError } from 'rxjs';
 
 /**
  * Go Details Component
@@ -34,11 +40,13 @@ export class GoDetailsComponent {
    */
   toMovie(url: string, id: string) {
     this.router.navigate([url, id]).then((event) => {
-      if (event) {
-        console.log('Navigation is successful!');
-      }
-      else {
-        console.log('Navigation has failed!')
+      if (!event) {
+        // only log in dev mode
+        if (isDevMode()) {
+          console.error('Navigation has failed');
+        }
+        // throw error always
+        return throwError('Something went wrong!')
       }
     });
   }

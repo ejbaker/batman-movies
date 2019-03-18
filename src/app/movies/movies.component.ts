@@ -63,15 +63,10 @@ export class MoviesComponent implements OnInit {
       }) => {
         // arrow functions preserve parent `this`
         // so we can continue to refer to the component properties/methods with `this`
-        // peel off Search
-        const parsedData = data.Search;
-        // update decades
+        // set decades
         this.decades = data.Decades;
-        // sort results
-        this.movies = parsedData.sort((obj1, obj2) => {
-          // ascending
-          return obj1.Year - obj2.Year;
-        });
+        // set movies
+        this.movies = data.Search;
         // filter movies
         this.displayMovies();
       });
