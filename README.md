@@ -1,29 +1,24 @@
 # Front-End Coding Challenge
 
-## Task
+## Methodology
 
-Create a simple interface for viewing the latest Batman movies as a vertical list of ten movies which can also be filtered by decade.
+Given the option to work with either Angular 1.7 or the latest (then Angular 7), I opted for the latter. I always prefer to learn new things when I can, and it was a lot more fun and exciting to work in Angular 7. I used Angular CLI for the very sensible directory structure and boilerplate tests. The component / service generator also came in handy.
 
-A UI mockup can be found in the included `moviemock.sketch` file (or `moviemock.pdf` if you don't have Sketch).
-Only one movie is shown in the mockup, but use that as a template for the other 9.
+## Design
 
-## Requirements
-* Build using the latest version of AngularJS or Angular, whichever is most comfortable to you.
-* Use SASS to write your css and compile it down.
-* Write your JavaScript using either vanilla js or using TypeScript and compile it down.
-* Build and include at least one Angular component.
-* Make sure your code is supported by Chrome, FF, and IE11.
-* Publish your completed project to a github repo provide us with a link.
+App initially loads the list of movies via a data service that connects to the API. A pipe is used to manipulate the resulting data slightly, changing the value of Poster and adding a few more fields from the get-by-ID API call to match the comp. Clicking the View Details button opens up a separate view, mostly included for the sake of adding a bit more to the app, and on that view the View on IMDB button from the comp is available, which then opens imDB in a named second tab to avoid navigating the user away from our web app entirely.
 
-## APIs
+The View Details button was not called for by the comp, but given how easy it was to provide both it and View on IMDB, that is likely what I would do in a real-world situation -- build both options, then bring it back to the project manager to see which one is preferred.
 
-Sign up for a free api key to use the Movie service here:
-http://www.omdbapi.com/apikey.aspx
+## Angular 7 modules
 
-Using the first 10 results of this api search for batman movies:
-http://www.omdbapi.com/?s=Batman
+* @angular/animations
+* @angular/router
 
-Take those results and look up details for each movie returned using this api pattern:
-http://www.omdbapi.com/?i=tt0372784 (where i = the imdb id found above)
+## Other dependencies
 
-Hint: Images will be blocked from hotlinking. Manually download all of those images to the project first, then reference them locally (parse the url string from the response).
+* rxjs
+* core-js
+* zone.js
+* reflex-grid
+* modernizr
