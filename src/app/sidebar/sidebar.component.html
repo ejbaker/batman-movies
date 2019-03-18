@@ -1,5 +1,5 @@
 <nav>
-  <ul>
+  <ul *ngIf="decades">
     <li (click)="passDecade()" [class.active]="!currDecade">
       All
     </li>

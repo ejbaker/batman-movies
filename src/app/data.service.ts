@@ -12,7 +12,9 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  serviceUrl = 'https://www.omdbapi.com/?apikey=f59b2e4b&';
+  serviceUrl: string = 'https://www.omdbapi.com/?apikey=f59b2e4b&';
+  posterUrl: string = 'https://m.media-amazon.com/images/M/';
+  replacePosterUrl: string = 'https://ejbaker.github.io/batman-movies/assets/images/';
   decades: Array<any> = [];
 
   getFilteredMovies(movies: Array<any>, decade?: number) {
@@ -39,7 +41,7 @@ export class DataService {
             // add decade to decades
             this.decades.push(Math.ceil((movie.Year) / 10) * 10 - 10);
             // update the poster
-            movie.Poster = movie.Poster.replace("https://m.media-amazon.com/images/M/", "");
+            movie.Poster = movie.Poster.replace(this.posterUrl, this.replacePosterUrl);
             // get more movie data
             this.getMovie(movie.imdbID).subscribe((movieData: { Rated: string, Runtime: string, Released: string, Plot: string }) => {
               // add values
@@ -69,6 +71,18 @@ export class DataService {
   }
 
   getMovie(id: string) {
-    return this.http.get(`${this.serviceUrl}i=${id}`);
+    return this.http.get(`${this.serviceUrl}i=${id}`)
+    .pipe(
+      map((movie: {
+        Poster: string,
+        Rated: string,
+        Runtime: string,
+        Released: string,
+        Plot: string,
+      }) => {
+        movie.Poster = movie.Poster.replace(this.posterUrl, this.replacePosterUrl);
+        return movie;
+      })
+    );
   }
 }

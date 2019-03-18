@@ -1,3 +1,5 @@
+@import 'abstracts/variables';
+
 nav {
     margin-bottom: 40px;
 
@@ -6,32 +8,32 @@ nav {
 
         li {
             display: inline-block;
-            background: #F7F8F9;
-            color: #61696E;
-            font-family: 'Open Sans', Verdana, Tahoma, sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 14px 25px;
-            border: 1px solid #c2cad0;
+            background: $offWhite;
+            color: $medGray;
+            font-family: $fontStackAccent;
+            font-size: $mainFontSize;
+            font-weight: $fontWeightBold;
+            padding: $mainFontSize 25px;
+            border: 1px solid $lightGray;
             border-left: none;
             cursor: default;
 
             &:first-child {
-                border-left: 1px solid #c2cad0;
-                border-top-left-radius: 8px;
-                border-bottom-left-radius: 8px;
+                border-left: 1px solid $lightGray;
+                border-top-left-radius: $radius;
+                border-bottom-left-radius: $radius;
             }
             &:last-child {
                 border-left: none;
-                border-top-right-radius: 8px;
-                border-bottom-right-radius: 8px;
+                border-top-right-radius: $radius;
+                border-bottom-right-radius: $radius;
             }
 
             &.active {
-                background: #1a72b0;
+                background: $skyBlue;
                 color: #fff;
                 text-shadow: 3px 4px 0px rgba(0, 0, 0, 0.1);
-                border: 1px solid #1a72b0;
+                border: 1px solid $skyBlue;
             }
         }
     }

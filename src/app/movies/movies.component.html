@@ -1,19 +1,21 @@
 <app-sidebar [decades]="decades" [currDecade]="currDecade" (updateDecade)="displayMovies($event)"></app-sidebar>
 
-<ul class="movies">
+<ul class="movies" [@listStagger]="filteredMovies">
   <li *ngFor="let movie of filteredMovies" class="grid grid-bleed">
-    <div class="image col-2"><img src="https://ejbaker.github.io/batman-movies/assets/images/{{ movie.Poster }}"></div>
-    <div class="content col-10 col-grid">
-      <div class="title">{{ movie.Title }}</div>
-      <div class="metadata">
-        <div class="rated"><span>{{ movie.Rated }}</span></div>
-        <div class="runtime">{{ movie.Runtime }}</div>
-        <div class="release">{{ movie.Released }}</div>
+      <div class="image col-2"><img [src]="movie.Poster"></div>
+      <div class="content col-10 col-grid">
+        <div class="title">{{ movie.Title }}</div>
+        <ul class="metadata">
+          <li class="rated"><div>{{ movie.Rated }}</div></li>
+          <li class="runtime">{{ movie.Runtime }}</li>
+          <li class="release">{{ movie.Released }}</li>
+        </ul>
+        <div class="plot">
+          {{ movie.Plot }}
+        </div>
+        <div class="nav flex-footer">
+          <app-go-details [imdbId]="movie.imdbID"></app-go-details>
+        </div>
       </div>
-      <div class="plot">
-        {{ movie.Plot }}
-      </div>
-      <div class="imdb flex-footer"><app-go-to-imdb [imdbId]="movie.imdbID"></app-go-to-imdb></div>
-    </div>
-  </li>
+    </li>
 </ul>
